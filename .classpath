@@ -7,12 +7,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="client/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="client/ws-commons-util-1.0.2.jar"/>
-	<classpathentry kind="lib" path="client/xmlrpc-client-3.1.3.jar"/>
-	<classpathentry kind="lib" path="client/xmlrpc-common-3.1.3.jar"/>
 	<classpathentry kind="lib" path="server/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="server/ws-commons-util-1.0.2.jar"/>
-	<classpathentry kind="lib" path="server/xmlrpc-common-3.1.3.jar"/>
-	<classpathentry kind="lib" path="server/xmlrpc-server-3.1.3.jar"/>
+	<classpathentry kind="lib" path="client/amqp-client-5.20.0.jar"/>
+	<classpathentry kind="lib" path="client/slf4j-simple-2.0.9.jar"/>
+	<classpathentry kind="lib" path="client/slf4j-api-2.0.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

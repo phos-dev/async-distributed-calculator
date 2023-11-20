@@ -1,0 +1,45 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - calculator-net
+    volumes:
+      - type: bind
+        source: ./definitions.json
+        target: /etc/rabbitmq/definitions.json
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  calculator-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - calculator-net
+
+  calculator-handler:
+    build:
+      context: .
+      dockerfile: ./CalculatorHandler.DockerFile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - calculator-net
+
+networks:
+  calculator-net:
+    driver: bridge
